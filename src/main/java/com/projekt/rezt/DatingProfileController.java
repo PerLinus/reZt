@@ -1,10 +1,7 @@
 package com.projekt.rezt;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DatingProfileController {
@@ -22,6 +19,22 @@ public class DatingProfileController {
         datingProfileRepository.save(datingProfile);
         return "Dating Profile Successfully Saved";
     }
+
+    @GetMapping(value = "/searchByDrinks/{first}/{second}")
+    public Iterable<DatingProfile> findProfileByDrinks(@RequestBody @PathVariable("first") Integer first, @PathVariable("second") Integer second) {
+        return datingProfileRepository.findByEnergyDrinksConsumedPerWeekBetween(first, second);
+    }
+
+    @GetMapping(value = "/searchByLength/{length}")
+    public Iterable<DatingProfile> findProfileByLength(@RequestBody @PathVariable("length") Integer length) {
+        return datingProfileRepository.findByLengthAfter(length);
+    }
+
+    @GetMapping(value = "/searchByGamingHours/{first}/{second}")
+    public Iterable<DatingProfile> findProfileByGamingHours(@RequestBody @PathVariable("first") double first, @PathVariable("second") double second) {
+        return datingProfileRepository.findByGamingHoursPerWeekBetween(first, second);
+    }
+
 }
 
 
