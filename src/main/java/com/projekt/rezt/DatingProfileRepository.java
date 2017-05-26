@@ -11,4 +11,6 @@ public interface DatingProfileRepository extends CrudRepository<DatingProfile, L
 
     Iterable<DatingProfile> findByGamingHoursPerWeekBetween(double first, double second);
 
+    Iterable<DatingProfile> findByRagerAndAgeBetween(boolean isRager, Integer ageMin, Integer ageMax);
+
 }

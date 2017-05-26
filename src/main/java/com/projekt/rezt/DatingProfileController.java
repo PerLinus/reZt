@@ -35,6 +35,13 @@ public class DatingProfileController {
         return datingProfileRepository.findByGamingHoursPerWeekBetween(first, second);
     }
 
+    @GetMapping(value = "searchByRagerAndAge/{isRager}/{ageMin}/{ageMax}")
+    public Iterable<DatingProfile> findProfileByRagerAndAge(@RequestBody @PathVariable("isRager") boolean isRager,
+                                                            @PathVariable("ageMin") Integer ageMin,
+                                                            @PathVariable("ageMax") Integer ageMax){
+        return datingProfileRepository.findByRagerAndAgeBetween(isRager, ageMin, ageMax);
+    }
+
 }
 
 
