@@ -18,7 +18,6 @@ public class ReztApplication implements CommandLineRunner{
 	@Override
 	public void run(String... strings) throws Exception {
 
-
 		DatingProfile datingProfile1 = new DatingProfile();
 		DatingProfile datingProfile2 = new DatingProfile();
 		DatingProfile datingProfile3 = new DatingProfile();
